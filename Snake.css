@@ -76,7 +76,7 @@ body,
 }
 
 .snake {
-    border: 5a5a5a 1px dotted;
+    border: #5a5a5a 1px dotted;
 }
 
 .food {
@@ -87,5 +87,4 @@ body,
 #logo {
     position: absolute;
     width: 350px;
-    position: center;
 }
