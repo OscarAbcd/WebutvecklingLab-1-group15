@@ -1,0 +1,163 @@
+/* General Body Styling */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "VT323", monospace;
+}
+
+body,
+.snake {
+    background-color: #414141;
+}
+
+/* Menu Bar Styling */
+header {
+    background-color: #595f43;
+    width: 100%;
+    padding: 0px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0px 0;
+    margin: 0;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.menu div {
+    flex-grow: 1;
+}
+
+.menu button {
+    margin-right: 15px; /* Add space between buttons */
+    font-family: 'VT323', monospace; /* Match the font used for the game */
+    font-size: 24px; /* Adjust font size if needed */
+    padding: 20px; /* Add padding to buttons */
+    background-color: #595f43; /* Set background color */
+    border: none; /* Remove default border */
+    color: #fff; /* Set text color */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Remove the margin from the last button */
+.menu button:last-child {
+    margin-right: 0;
+}
+
+.menu button:hover {
+    background-color: #abb78a;
+}
+
+/* Game Board and Borders */
+#game-board {
+    border-radius: 100px;
+    display: grid;
+    grid-template-columns: repeat(20, 20px);
+    grid-template-rows: repeat(20, 20px);
+    margin: 5px;
+}
+
+.game-border-1 {
+    border: #595f43 solid 10px;
+    border-radius: 30px;
+    box-shadow: inset 0 0 0 10px #595f43;
+}
+
+.game-border-2 {
+    border: #abb78a solid 8px;
+    border-radius: 26px;
+    box-shadow: inset 0 0 0 10px #abb78a;
+}
+
+.game-border-3 {
+    border: #8b966c solid 30px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 5px #8b966c;
+}
+
+/* Text Box for Instructions */
+#instructions-text {
+    position: absolute;
+    top: 60%;
+    color: #333;
+    width: 300px;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 30px;
+    margin: 0;
+}
+
+/* Text Box Styling for Other Pages */
+.text-box {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Apply game borders to text boxes */
+.text-box .game-border-1,
+.text-box .game-border-2,
+.text-box .game-border-3 {
+    border: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+}
+
+/* Scores Styling */
+.scores {
+    display: flex;
+    justify-content: space-between;
+}
+
+#score {
+    color: #abb78a
+}
+
+#score,
+#highscore {
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+
+#highscore {
+    color: #d8ddca;
+    display: none;
+}
+
+.game-border-3,
+#logo {
+    background-color: #c4cfa3;
+}
+
+#logo {
+    position: absolute;
+    width: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 70%;
+}
+
+/* Page Styling */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
