@@ -1,6 +1,7 @@
 //Defining HTML elements
 const board = document.getElementById('game-board');
-const instructionsText = document.getElementById('instruction-text');
+const instructionsText = document.getElementById('instructions-text');
+const logo = document.getElementById('logo');
 
 //Defining game variables
 const gridSize = 20;
@@ -78,7 +79,7 @@ function move() {
     if (head.x === food.x && head.y === food.y) {
         food = generateFood();
         clearInterval(); 
-        GameInterval = setInterval( {} => {
+        GameInterval = setInterval(() => {
             move();
             draw();
         }, gameSpeedDelay);
@@ -87,7 +88,7 @@ function move() {
     }
 }
 
-draw();
+//draw();
 
 // setInterval(() => {
 //     move();
@@ -96,4 +97,34 @@ draw();
 
 function startGame() {
     gameStarted = true;
+    instructionsText.style.display = 'none';
+    logo.style.display = 'none';
+    GameInterval = setInterval(() => {
+        move();
+        //checkCollision();
+        draw();
+    }, gameSpeedDelay);
 }
+
+function handleKeyPress(event) {
+    if((!gameStarted && event.code === 'Space') || (!gameStarted && event.code === ' ')) {
+        startGame();
+    } else {
+        switch (event.code) {
+            case 'ArrowUp':
+              direction = 'up';
+              break;
+            case 'ArrowDown':
+                direction = 'down';
+                break;
+            case 'ArrowLeft':
+                direction = 'left';
+                break;
+            case 'ArrowRight':
+                direction = 'right';
+                break;
+        }
+    }
+}
+
+document.addEventListener('keydown', handleKeyPress);
