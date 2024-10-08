@@ -2,6 +2,7 @@
 const board = document.getElementById('game-board');
 const instructionsText = document.getElementById('instructions-text');
 const logo = document.getElementById('logo');
+const score = document.getElementById('score');
 
 //Defining game variables
 const gridSize = 20;
@@ -17,6 +18,7 @@ function draw() {
     board.innerHTML = '';
     drawSnake();
     drawFood();
+    updateScore();
 }
 
 //Draw snake on game board
@@ -82,7 +84,7 @@ function move() {
         clearInterval(GameInterval); 
         GameInterval = setInterval(() => {
             move();
-            //checkCollision();
+            checkCollision();
             draw();
         }, gameSpeedDelay);
     } else {
@@ -103,7 +105,7 @@ function startGame() {
     logo.style.display = 'none';
     GameInterval = setInterval(() => {
         move();
-        //checkCollision();
+        checkCollision();
         draw();
     }, gameSpeedDelay);
 }
@@ -135,5 +137,45 @@ function increaseSpeed() {
     console.log(gameSpeedDelay);
     if (gameSpeedDelay > 150) {
         gameSpeedDelay -= 5;
+    } else if (gameSpeedDelay > 100) {
+        gameSpeedDelay -= 3;
+    } else if (gameSpeedDelay > 50) {
+        gameSpeedDelay -= 2;
+    } else if (gameSpeedDelay > 25) {
+        gameSpeedDelay -= 1;
+    } else if (gameSpeedDelay > 20) {
+        gameSpeedDelay -= 0;
     }
+}
+
+function checkCollision() {
+    const head = snake[0];
+
+    if(head.x < 1 || head.x > gridSize || head.y < 1 || head.y > gridSize) {
+        resetGame();
+    }
+
+    for(let i = 1; i < snake.length; i++) {
+        if (head.x === snake[i].x && head.y === snake[i].y) {
+            resetGame();
+        }
+    }
+}
+
+function updateScore() {
+    const currentScore = snake.length - 1;
+    score.textContent = currentScore.toString().padStart(3, '0');
+}
+
+function resetGame() {
+    snake = [{ x: 10, y: 10 }];
+    food = generateFood();
+    direction = 'right';
+    gameSpeedDelay = 200;
+    updateScore();
+    clearInterval(GameInterval);
+    gameStarted = false;
+    instructionsText.style.display = 'block';
+    logo.style.display = 'block';
+    draw();
 }
