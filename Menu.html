@@ -16,7 +16,7 @@
         <nav>
             <div class="menu">
                 <div><button id="start-btn" onclick="showPage('welcome')">Start</button></div>
-                <div><button id="snake-game-btn" onclick="showPage('game')">Play Snake</button></div>
+                <div><button id="snake-game-btn" onclick="showPage('login')">Play Snake</button></div>
                 <div><button id="highscore-btn" onclick="showPage('highscores')">Highscore</button></div>
                 <div><button id="instructions-btn" onclick="showPage('instructions')">Instructions</button></div>
             </div>
@@ -24,37 +24,22 @@
     </header>
     <!-- Pages -->
     <section id="welcome" class="page active">
-        <div class="page-content"></div>
+        <div class="page-content box">
         <h1>Welcome group 15s snake web page!</h1>
         <p>Press 'Play Snake' to go to the login page and play the game.</p>
+        </div>
     </section>
     <section id="instructions" class="page">
-        <div class="page-content"></div>    
+        <div class="page-content box">   
         <h1>Instructions</h1>
         <p>Use arrow keys to move the snake. Eat the food to grow.</p>
+        </div>
     </section>
     <section id="highscores" class="page">
-        <div class="page-content"></div>
+        <div class="page-content box">
         <h1>High Scores</h1>
         <ul id="scoreList"></ul>
-    </section>
-    <section id="game" class="page">
-        <div class="page-content"></div>
-        <!-- Pages -->
-    <section id="welcome" class="page active">
-        <div class="page-content"></div>
-        <h1>Welcome group 15s snake web page!</h1>
-        <p>Press 'Play Snake' to go to the login page and play the game.</p>
-    </section>
-    <section id="instructions" class="page">
-        <div class="page-content"></div>    
-        <h1>Instructions</h1>
-        <p>Use arrow keys to move the snake. Eat the food to grow.</p>
-    </section>
-    <section id="highscores" class="page">
-        <div class="page-content"></div>
-        <h1>High Scores</h1>
-        <ul id="scoreList"></ul>
+        </div>
     </section>
     <section id="game" class="page">
         <div class="page-content"></div>
@@ -72,8 +57,23 @@
             </div>
         </div>
         <h1 id="instructions-text">Press spacebar to start the game</h1>
-        <img id="logo" src="Snake image.png" alt="snake-logo" />
+        <img id="logo" src="Snakeimage.png" alt="snake-logo" />
     </section>
-    </section>
+    <!-- Login -->
+    <section id="login" class="page">
+        <div class="page-content box">
+        <h1>Login</h1>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="button" id="login-btn">Login</button> <!-- Change type to "button" -->
+        </form>
+        <p id="login-error" style="color:red;"></p>
+    </div>
+    </section>    
 </body>
 </html>

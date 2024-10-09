@@ -86,7 +86,7 @@ header {
     box-shadow: inset 0 0 0 5px #8b966c;
 }
 
-/* Text Box for Instructions */
+/* Text Box for Instructions on the game page */
 #instructions-text {
     position: absolute;
     top: 60%;
@@ -96,26 +96,6 @@ header {
     text-transform: capitalize;
     padding: 30px;
     margin: 0;
-}
-
-/* Text Box Styling for Other Pages */
-.text-box {
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    background-color: #fff;
-    color: #333;
-}
-
-/* Apply game borders to text boxes */
-.text-box .game-border-1,
-.text-box .game-border-2,
-.text-box .game-border-3 {
-    border: inherit;
-    border-radius: inherit;
-    box-shadow: inherit;
 }
 
 /* Scores Styling */
@@ -148,9 +128,6 @@ header {
 #logo {
     position: absolute;
     width: 350px;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 70%;
 }
 
 /* Page Styling */
@@ -160,4 +137,17 @@ header {
 
 .page.active {
     display: block;
+}
+
+.box {
+    width: 400px; /* Set the width of the box */
+    height: 400px; /* Set the height of the box */
+    background-color: #abb78a; /* Set to the same color as menu buttons */
+    color: #333; /* Text color */
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    border-radius: 20px; /* Optional: rounded corners */
+    margin: 0 auto; /* Center the box horizontally */
 }
