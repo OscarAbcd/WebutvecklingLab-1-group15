@@ -3,13 +3,15 @@ const board = document.getElementById('game-board');
 const instructionsText = document.getElementById('instructions-text');
 const logo = document.getElementById('logo');
 const score = document.getElementById('score');
+const highScoreText = document.getElementById('highscore');
 
 //Defining game variables
 const gridSize = 20;
 let snake = [{ x: 10, y: 10 }];
 let food = generateFood();
+let highScore = 0;
 let direction = 'right';
-let GameInterval;
+let gameInterval;
 let gameSpeedDelay = 200;
 let gameStarted = false;
 
@@ -32,9 +34,11 @@ function drawSnake() {
 
 //Draw food on game board
 function drawFood() {
+    if (gameStarted) {
     const foodElement = createGameElement('div', 'food');
     setPosition(foodElement, food);
     board.appendChild(foodElement);
+    }
 }
 
 //Create game element
@@ -77,14 +81,12 @@ function move() {
     
     snake.unshift(head);
 
-    //snake.pop();
-
     //check if snake eats food
     if (head.x === food.x && head.y === food.y) {
         food = generateFood();
         increaseSpeed();
         clearInterval(GameInterval); 
-        GameInterval = setInterval(() => {
+        gameInterval = setInterval(() => {
             move();
             checkCollision();
             draw();
@@ -94,18 +96,11 @@ function move() {
     }
 }
 
-//draw();
-
-// setInterval(() => {
-//     move();
-//     draw();
-// }, 200);
-
 function startGame() {
     gameStarted = true;
     instructionsText.style.display = 'none';
     logo.style.display = 'none';
-    GameInterval = setInterval(() => {
+    gameInterval = setInterval(() => {
         move();
         checkCollision();
         draw();
@@ -169,15 +164,29 @@ function updateScore() {
     score.textContent = currentScore.toString().padStart(3, '0');
 }
 
+function updateHighScore() {
+    const currentScore = snake.length - 1;
+    if (currentScore > highScore) {
+        highScore = currentScore;
+        highScore.textContent = highScore.toString().padStart(3, '0');
+    }
+    highScoreText.style.display = 'block';
+}
+
+function stopGame() {
+    clearInterval(gameInterval);
+    gameStarted = false;
+    instructionsText.style.display = 'block';
+    logo.style.display = 'block';
+}
+
 function resetGame() {
     snake = [{ x: 10, y: 10 }];
     food = generateFood();
     direction = 'right';
     gameSpeedDelay = 200;
     updateScore();
-    clearInterval(GameInterval);
-    gameStarted = false;
-    instructionsText.style.display = 'block';
-    logo.style.display = 'block';
+    updateHighScore();
+    stopGame();
     draw();
 }
