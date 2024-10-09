@@ -9,7 +9,7 @@ const highScoreText = document.getElementById('highscore');
 const gridSize = 20;
 let snake = [{ x: 10, y: 10 }];
 let food = generateFood();
-let highScore = 0;
+let highScore = localStorage.getItem('highscore') ? parseInt(localStorage.getItem('highscore')) : 0;
 let direction = 'right';
 let gameInterval;
 let gameSpeedDelay = 200;
@@ -85,7 +85,7 @@ function move() {
     if (head.x === food.x && head.y === food.y) {
         food = generateFood();
         increaseSpeed();
-        clearInterval(GameInterval); 
+        clearInterval(gameInterval); 
         gameInterval = setInterval(() => {
             move();
             checkCollision();
@@ -159,19 +159,20 @@ function checkCollision() {
     }
 }
 
+highScoreText.textContent = highScore.toString().padStart(3, '0');
+highScoreText.style.display = highScore > 0 ? 'none' : 'block';
+
 function updateScore() {
     const currentScore = snake.length - 1;
     score.textContent = currentScore.toString().padStart(3, '0');
-}
-
-function updateHighScore() {
-    const currentScore = snake.length - 1;
     if (currentScore > highScore) {
         highScore = currentScore;
-        highScore.textContent = highScore.toString().padStart(3, '0');
+        highScoreText.textContent = highScore.toString().padStart(3, '0');
+        localStorage.setItem('highscore', highScore);
     }
     highScoreText.style.display = 'block';
 }
+
 
 function stopGame() {
     clearInterval(gameInterval);
@@ -181,12 +182,21 @@ function stopGame() {
 }
 
 function resetGame() {
+    stopGame();
     snake = [{ x: 10, y: 10 }];
     food = generateFood();
     direction = 'right';
     gameSpeedDelay = 200;
     updateScore();
-    updateHighScore();
-    stopGame();
     draw();
 }
+
+// function updateHighScore() {
+//     const currentScore = snake.length - 1;
+//     if (currentScore > highScore) {
+//         highScore = currentScore;
+//         highScoreText.textContent = highScore.toString().padStart(3, '0');
+        
+//     }
+//     highScoreText.style.display = 'block';
+// }
