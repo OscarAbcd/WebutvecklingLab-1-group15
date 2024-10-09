@@ -86,7 +86,7 @@ header {
     box-shadow: inset 0 0 0 5px #8b966c;
 }
 
-/* Text Box for Instructions */
+/* Text Box for Instructions on the game page */
 #instructions-text {
     position: absolute;
     top: 60%;
@@ -110,13 +110,13 @@ header {
 }
 
 /* Apply game borders to text boxes */
-.text-box .game-border-1,
+/*.text-box .game-border-1,
 .text-box .game-border-2,
 .text-box .game-border-3 {
     border: inherit;
     border-radius: inherit;
     box-shadow: inherit;
-}
+}*/
 
 /* Scores Styling */
 .scores {
@@ -148,9 +148,6 @@ header {
 #logo {
     position: absolute;
     width: 350px;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 70%;
 }
 
 /* Page Styling */
