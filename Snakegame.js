@@ -50,13 +50,14 @@ function setPosition(element, position) {
     element.style.gridRow = position.y;
 }
 
-
+//Generate food at random position
 function generateFood() {
     const x = Math.floor(Math.random() * gridSize) + 1;
     const y = Math.floor(Math.random() * gridSize) + 1;
     return { x, y };
 }
 
+//Move snake
 function move() {
     const head = { ...snake[0]};
     switch (direction) {
@@ -78,6 +79,7 @@ function move() {
 
     //snake.pop();
 
+    //check if snake eats food
     if (head.x === food.x && head.y === food.y) {
         food = generateFood();
         increaseSpeed();
