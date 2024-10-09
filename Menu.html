@@ -16,7 +16,7 @@
         <nav>
             <div class="menu">
                 <div><button id="start-btn" onclick="showPage('welcome')">Start</button></div>
-                <div><button id="snake-game-btn" onclick="showPage('game')">Play Snake</button></div>
+                <div><button id="snake-game-btn" onclick="showPage('login')">Play Snake</button></div>
                 <div><button id="highscore-btn" onclick="showPage('highscores')">Highscore</button></div>
                 <div><button id="instructions-btn" onclick="showPage('instructions')">Instructions</button></div>
             </div>
@@ -56,6 +56,20 @@
         <h1 id="instructions-text">Press spacebar to start the game</h1>
         <img id="logo" src="Snakeimage.png" alt="snake-logo" />
     </section>
-    </section>
+    <!-- Login -->
+    <section id="login" class="page">
+        <div class="page-content"></div>
+        <h1>Login</h1>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+        <p id="login-error" style="color:red;"></p>
+    </section>    
 </body>
 </html>
