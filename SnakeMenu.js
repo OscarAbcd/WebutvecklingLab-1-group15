@@ -260,6 +260,10 @@ function resetGame() {
     food = generateFood();
     direction = 'right';
     gameSpeedDelay = 200;
+
+    instructionsText.style.display = 'block';
+    logo.style.display = 'block';
+
     updateScore();
     draw();
 }
