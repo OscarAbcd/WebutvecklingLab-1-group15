@@ -13,6 +13,15 @@ body,
     background-color: #414141;
 }
 
+.food {
+    background-color: #dedede;
+    border: #999 5px solid;
+}
+
+.snake {
+    border: #5a5a5a 1px dotted;
+}
+
 /* Menu Bar Styling */
 header {
     background-color: #595f43;
@@ -128,6 +137,9 @@ header {
 #logo {
     position: absolute;
     width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Page Styling */
