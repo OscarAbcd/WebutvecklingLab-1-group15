@@ -107,6 +107,7 @@ header {
     margin: 0;
 }
 
+/* Not working atm...*/
 #instructions-text, #logo {
     grid-column: 1 / -1; /* Make the elements span the full width of the grid */
     grid-row: 1 / -1;    /* Make the elements span the full height of the grid */
@@ -140,6 +141,7 @@ header {
 .game-border-3,
 #logo {
     background-color: #c4cfa3;
+    padding: auto;
 }
 
 #logo {

@@ -69,6 +69,11 @@ function showPage(pageId) {
     const selectedPage = document.getElementById(pageId);
     if (selectedPage) {
         selectedPage.classList.add('active');
+
+        // Display highscores on the highscore page
+        if (pageId === 'highscores') {
+            displayHighScores();
+        }
     }
 }
 //Defining HTML elements
@@ -87,6 +92,35 @@ let direction = 'right';
 let gameInterval;
 let gameSpeedDelay = 200;
 let gameStarted = false;
+
+//Highscores updating, displaying and saving top 5 highscores
+let highScores = JSON.parse(localStorage.getItem('highScores')) || []; // Get highscores from local storage
+
+function updateHighScores(currentScore) {
+    // Add the current score to the highscores array
+    highScores.push(currentScore);
+    // Sort the highscores array in descending order
+    highScores.sort((a, b) => b - a);
+    // Keep only the top 5 highscores
+    if (highScores.length > 5) {
+        highScores.pop();
+    }
+    // Save the highscores array to local storage
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+}
+function displayHighScores() {
+    // Clear the highscores list
+    const scoreList = document.getElementById('scoreList');
+    scoreList.innerHTML = '';
+
+    // Loop through the highscores array and display each score
+    highScores.forEach((score, index) => {
+        const listItem = document.createElement('li');
+        // Display the score with leading zeros
+        listItem.textContent = `#${index + 1}: ${score.toString().padStart(3, '0')}`;
+        scoreList.appendChild(listItem);
+    });
+}
 
 //Draw game board, map, snake, food
 function draw() {
@@ -240,6 +274,8 @@ function updateScore() {
     score.textContent = currentScore.toString().padStart(3, '0');
     if (currentScore > highScore) {
         highScore = currentScore;
+        //update high score list
+        updateHighScores(highScore);
         highScoreText.textContent = highScore.toString().padStart(3, '0');
         localStorage.setItem('highscore', highScore);
     }

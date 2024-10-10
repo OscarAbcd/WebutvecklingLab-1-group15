@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <title>Labb1-Group15-Snake</title>
     <link rel="stylesheet" href="SnakeMenu.css">
-    <script src="SnakeMenu.js" defer></script>
+    <!-- script src="SnakeMenu.js" defer></script-->
 </head>
 <body>
     <!-- Menu Bar -->
@@ -38,7 +38,7 @@
     <section id="highscores" class="page">
         <div class="page-content box">
         <h1>High Scores</h1>
-        <ul id="scoreList"></ul>
+        <ol id="ScoreList">
         </div>
     </section>
     <section id="game" class="page">
@@ -53,10 +53,7 @@
                     <div class="game-border-3">
                         <h1 id="instructions-text">Press spacebar to start the game</h1>
                         <img id="logo" src="Snakeimage.png" alt="snake-logo" />
-                        <div id="game-board">
-                            <!--<h1 id="instructions-text">Press spacebar to start the game</h1>
-                            <img id="logo" src="Snakeimage.png" alt="snake-logo" />-->
-                        </div>
+                        <div id="game-board"></div>
                     </div>
                 </div>
             </div>
@@ -77,6 +74,8 @@
         </form>
         <p id="login-error" style="color:red;"></p>
     </div>
-    </section>    
+    </section> 
+
+    <script src="SnakeMenu.js" defer></script>  
 </body>
 </html>
