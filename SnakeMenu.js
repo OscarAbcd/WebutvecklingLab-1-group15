@@ -97,16 +97,19 @@ let gameStarted = false;
 let highScores = JSON.parse(localStorage.getItem('highScores')) || []; // Get highscores from local storage
 
 function updateHighScores(currentScore) {
-    // Add the current score to the highscores array
-    highScores.push(currentScore);
-    // Sort the highscores array in descending order
-    highScores.sort((a, b) => b - a);
-    // Keep only the top 5 highscores
-    if (highScores.length > 5) {
-        highScores.pop();
-    }
+    // Check if the current score is in the top 5 highscores
+    if (highScores.length < 5 || currentScore > highScores[highScores.length - 1]) {
+        // Add the current score to the highscores array
+        highScores.push(currentScore);
+        // Sort the highscores array in descending order
+        highScores.sort((a, b) => b - a);
+        // Keep only the top 5 highscores
+        if (highScores.length > 5) {
+            highScores.pop();
+        }
     // Save the highscores array to local storage
     localStorage.setItem('highScores', JSON.stringify(highScores));
+    }
 }
 function displayHighScores() {
     // Clear the highscores list
@@ -117,10 +120,17 @@ function displayHighScores() {
     highScores.forEach((score, index) => {
         const listItem = document.createElement('li');
         // Display the score with leading zeros
-        listItem.textContent = `#${index + 1}: ${score.toString().padStart(3, '0')}`;
+        listItem.textContent = `${score.toString().padStart(3, '0')}`;
         scoreList.appendChild(listItem);
     });
 }
+
+// Call at end of game to update highscores
+function endGame() { 
+    updateHighScores(highScore);
+    displayHighScores();
+}
+
 
 //Draw game board, map, snake, food
 function draw() {
@@ -274,8 +284,6 @@ function updateScore() {
     score.textContent = currentScore.toString().padStart(3, '0');
     if (currentScore > highScore) {
         highScore = currentScore;
-        //update high score list
-        updateHighScores(highScore);
         highScoreText.textContent = highScore.toString().padStart(3, '0');
         localStorage.setItem('highscore', highScore);
     }
