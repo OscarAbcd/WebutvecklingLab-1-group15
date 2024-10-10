@@ -107,6 +107,14 @@ header {
     margin: 0;
 }
 
+#instructions-text, #logo {
+    grid-column: 1 / -1; /* Make the elements span the full width of the grid */
+    grid-row: 1 / -1;    /* Make the elements span the full height of the grid */
+    justify-self: center; /* Center horizontally within the grid cell */
+    align-self: center;   /* Center vertically within the grid cell */
+}
+
+
 /* Scores Styling */
 .scores {
     display: flex;
