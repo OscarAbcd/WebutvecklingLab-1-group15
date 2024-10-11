@@ -24,7 +24,8 @@ async function loginUser(username, password) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded', // Send as form data
             },
-            body: formData.toString() // Convert form data to query string format
+            body: formData.toString(), // Convert form data to query string format
+            mode: 'no-cors' // Fixes cors error, but no response can be read
         });
 
         console.log("Login attempt sent to the server."); // For debugging or confirmation
