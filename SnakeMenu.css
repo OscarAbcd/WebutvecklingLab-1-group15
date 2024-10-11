@@ -104,7 +104,7 @@ header {
     text-align: center;
     text-transform: capitalize;
     padding: 30px;
-    margin: 0;
+    margin: 20px;
 }
 
 /* Not working atm...*/
@@ -146,6 +146,9 @@ header {
 
 #logo {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 350px;
     display: flex;
     justify-content: center;
