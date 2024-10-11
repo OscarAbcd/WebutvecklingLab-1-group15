@@ -141,7 +141,7 @@ header {
 .game-border-3,
 #logo {
     background-color: #c4cfa3;
-    padding: auto;
+    /* padding: auto; */
 }
 
 #logo {
