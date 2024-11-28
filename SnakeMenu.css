@@ -108,12 +108,13 @@ header {
 }
 
 /* Not working atm...*/
-#instructions-text, #logo {
-    grid-column: 1 / -1; /* Make the elements span the full width of the grid */
-    grid-row: 1 / -1;    /* Make the elements span the full height of the grid */
-    justify-self: center; /* Center horizontally within the grid cell */
-    align-self: center;   /* Center vertically within the grid cell */
+/*#instructions-text, #logo {
+    grid-column: 1 / -1; 
+    grid-row: 1 / -1;    
+    justify-self: center; 
+    align-self: center;   
 }
+  */
 
 
 /* Scores Styling */
